@@ -11,10 +11,10 @@ In an effort to use the most accurate and intuative data, we limited our scope t
 
 ## Project collaborators
 
-Barry Haygood /n
-Cathy Egboh /n
-Maya Saeidi /n
-Michelle Brucato /n
+Barry Haygood ; 
+Cathy Egboh ; 
+Maya Saeidi ; 
+Michelle Brucato 
 
 ## Data Collection 
 
@@ -26,8 +26,12 @@ The Oscars data used for this project was pulled from DataHub.com as a csv file.
 
 ## Libraries Used 
 
-Pandas -- to easily import csv files and create data frames /n
-Matplotlib -- to visualize our data findings using various graphs /n
-Requests -- used to pull data from our API url /n
-Json_Normalize -- to make the API data more readable /n
+Pandas -- to easily import csv files and create data frames 
+
+Matplotlib -- to visualize our data findings using various graphs 
+
+Requests -- used to pull data from our API url 
+
+Json_Normalize -- to make the API data more readable 
+
 Blackcellmagic -- to auto format blocks of code for easier readability  
