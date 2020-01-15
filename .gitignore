@@ -1,3 +1,4 @@
 api_keys.py
-pymaceuticals_final.ipynb
-HerosOfPymoli_final.ipynb
+.DS_Store
+*.ipynb 
+bru_key.py
