@@ -3,9 +3,13 @@
 The goal of this project is to pull data from movie related API's to spot trends regarding movie success. 
 
 We focused on measuring the following data: 
+
 	- box office success compared to release month
+
 	- box office success compared to critic votes 
+
 	- Oscar nominations/wins in regards to release month, critic votes, and box office success. 
+
 	
 In an effort to use the most accurate and intuative data, we limited our scope to movies released from 1980 - 2017. 
 
