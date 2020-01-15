@@ -2,3 +2,5 @@ api_keys.py
 .DS_Store
 *.ipynb 
 bru_key.py
+.ipynb_checkpoints
+
