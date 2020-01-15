@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b8dcee902f9b8fbd8ddbb668fef6b0e560a77727a67039a15d9e5eb01de5f0c6"
+            "sha256": "d32b64415a84647f265d64363741321b1843a54e3931651f591294819c0163eb"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -250,6 +250,14 @@
             ],
             "version": "==2.5.2"
         },
+        "pymysql": {
+            "hashes": [
+                "sha256:3943fbbbc1e902f41daf7f9165519f140c4451c179380677e6a848587042561a",
+                "sha256:d8c059dcd81dedb85a9f034d5e22dcb4442c0b201908bede99e306d65ea7c8e7"
+            ],
+            "index": "pypi",
+            "version": "==0.9.3"
+        },
         "pyparsing": {
             "hashes": [
                 "sha256:4c830582a84fb022400b85429791bc551f1f4871c33f23e44f353119e92f969f",
@@ -336,6 +344,13 @@
                 "sha256:30f610279e8b2578cab6db20741130331735c781b56053c59c4076da27f06b66"
             ],
             "version": "==1.13.0"
+        },
+        "sqlalchemy": {
+            "hashes": [
+                "sha256:bfb8f464a5000b567ac1d350b9090cf081180ec1ab4aa87e7bca12dab25320ec"
+            ],
+            "index": "pypi",
+            "version": "==1.3.12"
         },
         "tornado": {
             "hashes": [
