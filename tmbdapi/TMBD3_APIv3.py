@@ -118,3 +118,58 @@ columns_drop = [
     "belongs_to_collection.backdrop_path",
 ]
 movie_revenue_df.drop(columns_drop, axis=1, inplace=True)
+
+# create index multiplier
+inflation_df["CPI_multiplier"] = (
+    inflation_df["CPIAUCNS"].iloc[-1] / inflation_df["CPIAUCNS"]
+)
+
+# Convert release date to month/year and create new column called release month
+inflation_df["month"] = pd.to_datetime(inflation_df["DATE"]).dt.to_period("M")
+
+# Merge CPI dataframe to movie_revenue_df by matching month
+
+final_df = pd.merge(movie_revenue_df, inflation_df, how="left", on="month")
+
+# Create CPI adjusted profit revenue and budget columns
+final_df["CPIAdjProfit"] = final_df["profit"] * final_df["CPI_multiplier"]
+final_df["CPIAdjRevenue"] = final_df["revenue"] * final_df["CPI_multiplier"]
+final_df["CPIAdjBudget"] = final_df["budget"] * final_df["CPI_multiplier"]
+
+# Remove new releases from dataset (released after 11/1/19)
+indexNames = final_df[final_df["month"] > datetime.date(2019, 11, 1)].index
+final_df.drop(indexNames, inplace=True)
+
+# Save final data to csv file
+
+final_df.to_csv(results_dir + final_data)
+
+# Create new dataframe with pre 1980 Release Data removed
+tmbd_data_post_1980_df = final_df
+tmbd_data_post_1980_df = tmbd_data_post_1980_df
+indexNames = tmbd_data_post_1980_df[tmbd_data_post_1980_df["month"] < datetime.date(1980, 1, 1)].index
+tmbd_data_post_1980_df.drop(indexNames, inplace=True)
+
+# Save tmbd_data_post_1980 to csv file
+
+tmbd_data_post_1980_df.to_csv(results_dir + "TMBD_data_post_1980.csv")
+
+#Load oscar data to dataframe
+path = os.path.join("Data", "data_csv.csv")
+oscars_df = pd.read_csv(path)
+
+#Merge Oscar data with post 1980 movie data to create best picture (bestpic_post_1980_df)
+bestpic_df = pd.merge(tmbd_data_post_1980_df, oscars_df, how = "left", left_on ="title", right_on='entity')
+
+#Create conditions to annote Best_Picture Winner,Nominee, No
+
+cond1 = bestpic_df.category.str.contains('BEST PICTURE')
+cond2 = bestpic_df.winner = True
+bestpic_df['category'] = bestpic_df['category'].fillna('missing')
+
+bestpic_df['Best_Picture'] = np.where(np.logical_and(cond1 == True, cond2), "Winner", "Nominee")
+
+bestpic_df.loc[bestpic_df['category'].str.contains("BEST PICTURE")==0,'Best_Picture'] = "No"
+
+# Save bestpic_df to csv file
+bestpic_df.to_csv(results_dir + "TMBD_Data_best_picture.csv")
