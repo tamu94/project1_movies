@@ -162,13 +162,11 @@ oscars_df = pd.read_csv(path)
 bestpic_df = pd.merge(tmbd_data_post_1980_df, oscars_df, how = "left", left_on ="title", right_on='entity')
 
 #Create conditions to annote Best_Picture Winner,Nominee, No
-
 cond1 = bestpic_df.category.str.contains('BEST PICTURE')
-cond2 = bestpic_df.winner = True
+cond2 = bestpic_df['winner'] == True
+#Denote Best Picture Restult
 bestpic_df['category'] = bestpic_df['category'].fillna('missing')
-
 bestpic_df['Best_Picture'] = np.where(np.logical_and(cond1 == True, cond2), "Winner", "Nominee")
-
 bestpic_df.loc[bestpic_df['category'].str.contains("BEST PICTURE")==0,'Best_Picture'] = "No"
 
 # Save bestpic_df to csv file
