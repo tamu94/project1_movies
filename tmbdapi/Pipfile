@@ -13,6 +13,7 @@ numpy = "*"
 requests = "*"
 pymysql = "*"
 sqlalchemy = "*"
+black = "*"
 
 [requires]
 python_version = "3.7"
