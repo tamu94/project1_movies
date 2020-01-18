@@ -41,6 +41,7 @@ def sum_of_releases():
     plt.ylabel("Movie Count")
     plt.bar(x, y)
     plt.grid()
+    plt.savefig("Sum_of_Releases")
     return plt.show()
 
 
@@ -61,6 +62,7 @@ def tmbd_1980_profit():
     plt.ylabel("Profit (CPI adjusted)", fontsize=12)
     formatter = ticker.FormatStrFormatter("$%1.2f")
     ax.yaxis.set_major_formatter(formatter)
+    plt.savefig("profit_release_month")
     return plt.show()
 
 
@@ -94,6 +96,7 @@ def bp_by_month():
         ),
     )
     plt.legend(loc="best")
+    plt.savefig("bp_by_month")
     return plt.show()
 
 
@@ -105,6 +108,7 @@ def bestpic_vote():
     ax.set_xlabel("Vote Average", fontsize=12)
     ax.set_ylabel("Oscar 'Best Picture' Result", )
     plt.subplots_adjust(left=0.25)
+    plt.savefig("bp_vote")
     return plt.show()
 
 
